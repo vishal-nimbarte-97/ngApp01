@@ -9,6 +9,8 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class DashboardComponent {
 
+  username = 'Vishal';
+
   constructor(private auth: AuthService, private router: Router) {}
 
   logout() {

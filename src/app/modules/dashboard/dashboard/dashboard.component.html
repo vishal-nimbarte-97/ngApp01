@@ -1,4 +1,63 @@
-<div class="dashboard">
-  <h1>Welcome to Dashboard</h1>
-  <button (click)="logout()">Logout</button>
+<div class="dashboard-container">
+
+  <!-- HEADER -->
+  <div class="dashboard-header">
+    <h1>
+      Welcome, Vishal <span class="wave-hand">👋</span>
+    </h1>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-card">
+    <h3>Total Records</h3>
+    <p>25</p>
+  </div>
+
+  <!-- CRUD -->
+  <div class="crud-section">
+
+    <div class="crud-header">
+      <h2>Users</h2>
+      <button class="add-btn">➕ Add New</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th class="actions">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Amit</td>
+            <td>amit@gmail.com</td>
+            <td>Admin</td>
+            <td class="actions">
+              <button class="edit-btn">✏️</button>
+              <button class="delete-btn">🗑</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Neha</td>
+            <td>neha@gmail.com</td>
+            <td>User</td>
+            <td class="actions">
+              <button class="edit-btn">✏️</button>
+              <button class="delete-btn">🗑</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
 </div>
