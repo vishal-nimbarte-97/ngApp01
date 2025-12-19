@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -21,20 +22,31 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   submit() {
-    if (this.loginForm.invalid) return;
+  if (this.loginForm.invalid) return;
 
-    this.loading = true;
+  this.loading = true;
+  this.error = '';
 
-    this.auth.login(this.loginForm.value as any).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
-      error: () => {
-        this.error = 'Invalid credentials';
-        this.loading = false;
+  this.auth.login(this.loginForm.value as any).subscribe({
+    next: () => {
+      this.router.navigate(['/dashboard']);
+      this.loading = false;
+    },
+    error: (err) => {
+      // Extract backend error message if available
+      if (err.error?.message) {
+        this.error = err.error.message;
+      } else {
+        this.error = 'Something went wrong';
       }
-    });
-  }
+      this.loading = false;
+    }
+  });
+}
+
 }

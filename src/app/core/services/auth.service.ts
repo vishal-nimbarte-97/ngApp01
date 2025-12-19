@@ -13,7 +13,9 @@ export class AuthService {
   login(payload: { username: string; password: string }) {
     return this.http.post<any>(`${this.API}/auth/login`, payload).pipe(
       tap(res => {
-        localStorage.setItem('token', res.token);
+        if (res.success && res.data?.accessToken) {
+          localStorage.setItem('token', res.data.accessToken);
+        }
       })
     );
   }
