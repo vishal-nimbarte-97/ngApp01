@@ -1,0 +1,14 @@
+.network-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  font-weight: 500;
+  z-index: 9999;
+}
+
+.offline {
+  background: linear-gradient(90deg, #ff4e50, #f44336);
+  color: #fff;
+}
